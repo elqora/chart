@@ -5,9 +5,10 @@ import { formatChartValue } from '../utils/formatters';
 
 export interface FlowRendererProps {
   chart: SerializedChart;
+  height?: number | string;
 }
 
-export const FlowRenderer: React.FC<FlowRendererProps> = ({ chart }) => {
+export const FlowRenderer: React.FC<FlowRendererProps> = ({ chart, height: customHeight }) => {
   const chartData = chart.data || chart.payload || {};
   const stages = (chartData.stages as any[]) || (chartData.rows as any[]) || [];
   const presentation = chartData.presentation;
@@ -15,8 +16,11 @@ export const FlowRenderer: React.FC<FlowRendererProps> = ({ chart }) => {
   const values = stages.map((item: any) => Number(item.value) || 0);
   const maxValue = Math.max(...values, 1);
 
+  const height = customHeight ?? 300;
+  const containerHeight = typeof height === 'number' ? `${height}px` : height;
+
   return (
-    <div style={{ width: '100%', minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '12px', padding: '16px', boxSizing: 'border-box' }}>
+    <div style={{ width: '100%', minHeight: containerHeight, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '12px', padding: '16px', boxSizing: 'border-box' }}>
       {stages.map((item: any, idx: number) => {
         const stageName = String(item.label || item.key || `Stage ${idx + 1}`);
         const val = Number(item.value) || 0;

@@ -5,15 +5,19 @@ import { formatChartValue } from '../utils/formatters';
 
 export interface StatisticalRendererProps {
   chart: SerializedChart;
+  height?: number | string;
 }
 
-export const StatisticalRenderer: React.FC<StatisticalRendererProps> = ({ chart }) => {
+export const StatisticalRenderer: React.FC<StatisticalRendererProps> = ({ chart, height: customHeight }) => {
   const chartData = chart.data || chart.payload || {};
   const items = (chartData.items as any[]) || (chartData.rows as any[]) || [];
   const presentation = chartData.presentation;
 
+  const height = customHeight ?? 300;
+  const containerHeight = typeof height === 'number' ? `${height}px` : height;
+
   return (
-    <div style={{ width: '100%', minHeight: '300px', display: 'flex', flexDirection: 'column', gap: '20px', padding: '16px', boxSizing: 'border-box' }}>
+    <div style={{ width: '100%', minHeight: containerHeight, display: 'flex', flexDirection: 'column', gap: '20px', padding: '16px', boxSizing: 'border-box' }}>
       {items.map((item: any, idx: number) => {
         const min = typeof item.minimum === 'number' ? item.minimum : (typeof item.min === 'number' ? item.min : 0);
         const max = typeof item.maximum === 'number' ? item.maximum : (typeof item.max === 'number' ? item.max : 100);

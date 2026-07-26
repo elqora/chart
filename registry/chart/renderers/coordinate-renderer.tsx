@@ -27,9 +27,10 @@ const Legend = RechartsLegend as any;
 
 export interface CoordinateRendererProps {
   chart: SerializedChart;
+  height?: number | string;
 }
 
-export const CoordinateRenderer: React.FC<CoordinateRendererProps> = ({ chart }) => {
+export const CoordinateRenderer: React.FC<CoordinateRendererProps> = ({ chart, height: customHeight }) => {
   const chartData = chart.data || chart.payload || {};
   const { type } = chart;
   const rows = (chartData.rows as any[]) || [];
@@ -43,9 +44,12 @@ export const CoordinateRenderer: React.FC<CoordinateRendererProps> = ({ chart })
   const isBubble = type === ChartType.BUBBLE;
   const sizeKey = chartData.size_field || series.find((s) => s.key === 'size')?.field || 'size';
 
+  const height = customHeight ?? 300;
+  const containerHeight = typeof height === 'number' ? `${height}px` : height;
+
   return (
-    <div style={{ width: '100%', height: '300px' }}>
-      <ResponsiveContainer width="100%" height={300}>
+    <div style={{ width: '100%', height: containerHeight }}>
+      <ResponsiveContainer width="100%" height={height}>
         <ScatterChart>
           <CartesianGrid stroke="#334155" opacity={0.5} strokeDasharray="3 3" />
           <XAxis dataKey={xKey} name="X" stroke="#94a3b8" tick={{ fill: '#cbd5e1', fontSize: 12 }} />

@@ -25,12 +25,16 @@ const Legend = RechartsLegend as any;
 
 export interface RadialRendererProps {
   chart: SerializedChart;
+  height?: number | string;
 }
 
-export const RadialRenderer: React.FC<RadialRendererProps> = ({ chart }) => {
+export const RadialRenderer: React.FC<RadialRendererProps> = ({ chart, height: customHeight }) => {
   const chartData = chart.data || chart.payload || {};
   const { type } = chart;
   const presentation = chartData.presentation;
+
+  const height = customHeight ?? 300;
+  const containerHeight = typeof height === 'number' ? `${height}px` : height;
 
   if (type === ChartType.GAUGE) {
     const value = typeof chartData.value === 'number' ? chartData.value : 0;
@@ -42,7 +46,7 @@ export const RadialRenderer: React.FC<RadialRendererProps> = ({ chart }) => {
     const angle = -180 + percent * 180;
 
     return (
-      <div style={{ width: '100%', height: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ width: '100%', height: containerHeight, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <svg viewBox="0 0 200 120" style={{ width: '280px', height: '170px' }}>
           <path
             d="M 20 100 A 80 80 0 0 1 180 100"
@@ -96,8 +100,8 @@ export const RadialRenderer: React.FC<RadialRendererProps> = ({ chart }) => {
   });
 
   return (
-    <div style={{ width: '100%', height: '300px' }}>
-      <ResponsiveContainer width="100%" height={300}>
+    <div style={{ width: '100%', height: containerHeight }}>
+      <ResponsiveContainer width="100%" height={height}>
         <RadarChart data={formattedRadarData}>
           <PolarGrid stroke="#334155" opacity={0.6} />
           <PolarAngleAxis dataKey="indicator" stroke="#94a3b8" tick={{ fill: '#cbd5e1', fontSize: 12 }} />

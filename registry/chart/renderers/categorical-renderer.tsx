@@ -21,9 +21,10 @@ const Legend = RechartsLegend as any;
 
 export interface CategoricalRendererProps {
   chart: SerializedChart;
+  height?: number | string;
 }
 
-export const CategoricalRenderer: React.FC<CategoricalRendererProps> = ({ chart }) => {
+export const CategoricalRenderer: React.FC<CategoricalRendererProps> = ({ chart, height: customHeight }) => {
   const chartData = chart.data || chart.payload || {};
   const { type } = chart;
   const rows = chartData.rows || [];
@@ -32,10 +33,12 @@ export const CategoricalRenderer: React.FC<CategoricalRendererProps> = ({ chart 
   const presentation = chartData.presentation;
 
   const isDoughnut = type === ChartType.DOUGHNUT;
+  const height = customHeight ?? 300;
+  const containerHeight = typeof height === 'number' ? `${height}px` : height;
 
   return (
-    <div className="w-full h-[300px]">
-      <ResponsiveContainer width="100%" height={300}>
+    <div style={{ width: '100%', height: containerHeight }}>
+      <ResponsiveContainer width="100%" height={height}>
         <PieChart>
           <Tooltip
             formatter={(val: number, name: string) => [

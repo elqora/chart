@@ -4,6 +4,24 @@ Elqora Chart is a framework-neutral PHP package for describing portable chart da
 
 It does not render charts, generate HTML, build JavaScript options, or depend on frontend or PHP frameworks.
 
+## System Architecture
+
+The Elqora Chart ecosystem consists of two complementary parts:
+
+1. **PHP Package (`elqora/chart`)**: The **protocol authority**. Defines chart semantics, data structures, serialization, and validation.
+2. **Elqora Shadcn React Registry**: The **host implementation**. A collection of editable React chart infrastructure components (built on Recharts & shadcn UI) designed to consume and render serialized `elqora/chart` JSON payloads on the frontend.
+
+### Installing the React Registry Components
+
+In your React host application, you can install the chart components directly via the shadcn CLI:
+
+```bash
+npx shadcn@latest add https://raw.githubusercontent.com/elqora/chart/main/registry.json
+```
+
+---
+
+
 ## Installation
 
 ```bash

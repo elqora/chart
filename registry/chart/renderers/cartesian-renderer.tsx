@@ -33,9 +33,10 @@ const Legend = RechartsLegend as any;
 
 export interface CartesianRendererProps {
   chart: SerializedChart;
+  height?: number | string;
 }
 
-export const CartesianRenderer: React.FC<CartesianRendererProps> = ({ chart }) => {
+export const CartesianRenderer: React.FC<CartesianRendererProps> = ({ chart, height: customHeight }) => {
   const chartData = chart.data || chart.payload || {};
   const { type } = chart;
   const rows = (chartData.rows as any[]) || [];
@@ -235,10 +236,12 @@ export const CartesianRenderer: React.FC<CartesianRendererProps> = ({ chart }) =
     }
   };
 
-  const height = isSparkline ? 60 : 300;
+  const defaultHeight = isSparkline ? 60 : 300;
+  const height = customHeight ?? defaultHeight;
+  const containerHeight = typeof height === 'number' ? `${height}px` : height;
 
   return (
-    <div style={{ width: '100%', height: `${height}px` }}>
+    <div style={{ width: '100%', height: containerHeight }}>
       <ResponsiveContainer width="100%" height={height}>
         {renderChartBody()}
       </ResponsiveContainer>

@@ -6,13 +6,17 @@ import { formatChartValue } from '../utils/formatters';
 
 export interface HierarchicalRendererProps {
   chart: SerializedChart;
+  height?: number | string;
 }
 
-export const HierarchicalRenderer: React.FC<HierarchicalRendererProps> = ({ chart }) => {
+export const HierarchicalRenderer: React.FC<HierarchicalRendererProps> = ({ chart, height: customHeight }) => {
   const chartData = chart.data || chart.payload || {};
   const { type } = chart;
   const roots = (chartData.roots as any[]) || (chartData.rows as any[]) || [];
   const presentation = chartData.presentation;
+
+  const height = customHeight ?? 300;
+  const containerHeight = typeof height === 'number' ? `${height}px` : height;
 
   // Flatten nodes for Treemap tile visualization
   const flattenNodes = (nodes: any[]): { key: string; label: string; value: number; depth: number }[] => {
@@ -41,7 +45,7 @@ export const HierarchicalRenderer: React.FC<HierarchicalRendererProps> = ({ char
 
   if (type === ChartType.TREEMAP) {
     return (
-      <div style={{ width: '100%', minHeight: '300px', display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '16px', boxSizing: 'border-box' }}>
+      <div style={{ width: '100%', minHeight: containerHeight, display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '16px', boxSizing: 'border-box' }}>
         {flatItems.map((item, idx) => {
           const flexGrow = Math.max(Math.round((item.value / totalValue) * 100), 1);
           return (
@@ -100,5 +104,5 @@ export const HierarchicalRenderer: React.FC<HierarchicalRendererProps> = ({ char
     </div>
   );
 
-  return <div style={{ width: '100%', minHeight: '300px', padding: '16px', boxSizing: 'border-box' }}>{renderTreeNodes(roots)}</div>;
+  return <div style={{ width: '100%', minHeight: containerHeight, padding: '16px', boxSizing: 'border-box' }}>{renderTreeNodes(roots)}</div>;
 };

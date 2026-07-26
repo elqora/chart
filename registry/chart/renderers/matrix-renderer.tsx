@@ -4,9 +4,10 @@ import { formatChartValue } from '../utils/formatters';
 
 export interface MatrixRendererProps {
   chart: SerializedChart;
+  height?: number | string;
 }
 
-export const MatrixRenderer: React.FC<MatrixRendererProps> = ({ chart }) => {
+export const MatrixRenderer: React.FC<MatrixRendererProps> = ({ chart, height: customHeight }) => {
   const chartData = chart.data || chart.payload || {};
   const rows = (chartData.rows as Record<string, unknown>[]) || [];
   const presentation = chartData.presentation;
@@ -22,13 +23,16 @@ export const MatrixRenderer: React.FC<MatrixRendererProps> = ({ chart }) => {
   const maxVal = Math.max(...values, 1);
   const minVal = Math.min(...values, 0);
 
+  const height = customHeight ?? 300;
+  const containerHeight = typeof height === 'number' ? `${height}px` : height;
+
   const getCellVal = (x: string, y: string): number | null => {
     const item = rows.find((p) => String(p[xField]) === x && String(p[yField]) === y);
     return item && typeof item[valueField] === 'number' ? (item[valueField] as number) : null;
   };
 
   return (
-    <div style={{ width: '100%', minHeight: '300px', overflowX: 'auto', padding: '16px', boxSizing: 'border-box' }}>
+    <div style={{ width: '100%', minHeight: containerHeight, overflowX: 'auto', padding: '16px', boxSizing: 'border-box' }}>
       <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: '6px', fontSize: '13px' }}>
         <thead>
           <tr>

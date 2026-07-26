@@ -14,9 +14,12 @@ import { FinancialRenderer } from './renderers/financial-renderer';
 export interface ChartRendererProps {
   chart: SerializedChart;
   className?: string;
+  style?: React.CSSProperties;
+  height?: number | string;
 }
 
-export const ChartRenderer: React.FC<ChartRendererProps> = ({ chart, className = '' }) => {
+export const ChartRenderer: React.FC<ChartRendererProps> = ({ chart, className = '', style, height }) => {
+
   if (!chart || !chart.type) {
     return (
       <div
@@ -39,30 +42,31 @@ export const ChartRenderer: React.FC<ChartRendererProps> = ({ chart, className =
 
     switch (family) {
       case ChartFamily.CARTESIAN:
-        return <CartesianRenderer chart={chart} />;
+        return <CartesianRenderer chart={chart} height={height} />;
       case ChartFamily.CATEGORICAL:
-        return <CategoricalRenderer chart={chart} />;
+        return <CategoricalRenderer chart={chart} height={height} />;
       case ChartFamily.COORDINATE:
-        return <CoordinateRenderer chart={chart} />;
+        return <CoordinateRenderer chart={chart} height={height} />;
       case ChartFamily.RADIAL:
-        return <RadialRenderer chart={chart} />;
+        return <RadialRenderer chart={chart} height={height} />;
       case ChartFamily.FLOW:
-        return <FlowRenderer chart={chart} />;
+        return <FlowRenderer chart={chart} height={height} />;
       case ChartFamily.MATRIX:
-        return <MatrixRenderer chart={chart} />;
+        return <MatrixRenderer chart={chart} height={height} />;
       case ChartFamily.HIERARCHICAL:
-        return <HierarchicalRenderer chart={chart} />;
+        return <HierarchicalRenderer chart={chart} height={height} />;
       case ChartFamily.STATISTICAL:
-        return <StatisticalRenderer chart={chart} />;
+        return <StatisticalRenderer chart={chart} height={height} />;
       case ChartFamily.FINANCIAL:
-        return <FinancialRenderer chart={chart} />;
+        return <FinancialRenderer chart={chart} height={height} />;
       default:
         if ([ChartType.LINE, ChartType.AREA, ChartType.BAR, ChartType.STACKED_BAR, ChartType.SPARKLINE].includes(type as ChartType)) {
-          return <CartesianRenderer chart={chart} />;
+          return <CartesianRenderer chart={chart} height={height} />;
         }
         if ([ChartType.PIE, ChartType.DOUGHNUT].includes(type as ChartType)) {
-          return <CategoricalRenderer chart={chart} />;
+          return <CategoricalRenderer chart={chart} height={height} />;
         }
+
         return (
           <div
             style={{
@@ -91,6 +95,7 @@ export const ChartRenderer: React.FC<ChartRendererProps> = ({ chart, className =
         boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
         padding: '16px',
         boxSizing: 'border-box',
+        ...style,
       }}
       className={className}
     >
@@ -110,3 +115,6 @@ export const ChartRenderer: React.FC<ChartRendererProps> = ({ chart, className =
     </div>
   );
 };
+
+export const Chart = ChartRenderer;
+

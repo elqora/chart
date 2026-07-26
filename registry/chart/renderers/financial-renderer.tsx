@@ -4,9 +4,10 @@ import { formatChartValue } from '../utils/formatters';
 
 export interface FinancialRendererProps {
   chart: SerializedChart;
+  height?: number | string;
 }
 
-export const FinancialRenderer: React.FC<FinancialRendererProps> = ({ chart }) => {
+export const FinancialRenderer: React.FC<FinancialRendererProps> = ({ chart, height: customHeight }) => {
   const chartData = chart.data || chart.payload || {};
   const points = (chartData.points as any[]) || (chartData.rows as any[]) || [];
   const presentation = chartData.presentation;
@@ -17,11 +18,14 @@ export const FinancialRenderer: React.FC<FinancialRendererProps> = ({ chart }) =
   const minVal = Math.min(...allLows, 0);
   const totalRange = maxVal - minVal || 1;
 
+  const height = customHeight ?? 300;
+  const containerHeight = typeof height === 'number' ? `${height}px` : height;
+
   return (
     <div
       style={{
         width: '100%',
-        height: '300px',
+        height: containerHeight,
         display: 'flex',
         alignItems: 'flex-end',
         justifyContent: 'space-around',
