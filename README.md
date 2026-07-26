@@ -4,22 +4,65 @@ Elqora Chart is a framework-neutral PHP package for describing portable chart da
 
 It does not render charts, generate HTML, build JavaScript options, or depend on frontend or PHP frameworks.
 
-## System Architecture
+## System Architecture & React Registry
 
-The Elqora Chart ecosystem consists of two complementary parts:
+The Elqora Chart system consists of two complementary components:
 
-1. **PHP Package (`elqora/chart`)**: The **protocol authority**. Defines chart semantics, data structures, serialization, and validation.
-2. **Elqora Shadcn React Registry**: The **host implementation**. A collection of editable React chart infrastructure components (built on Recharts & shadcn UI) designed to consume and render serialized `elqora/chart` JSON payloads on the frontend.
+1. **PHP Package (`elqora/chart`)**: The **protocol authority**. Runs on your backend to construct, validate, and serialize portable chart data models into deterministic JSON.
+2. **Elqora Shadcn React Registry**: The **customizable host implementation**. An editable React component registry built with Recharts, Tailwind CSS, and shadcn UI. It receives serialized JSON payloads directly from your PHP backend and renders them dynamically on the frontend.
 
-### Installing the React Registry Components
+### Installing React Registry Components
 
-In your React host application, you can install the chart components directly via the shadcn CLI:
+You can install the React chart infrastructure directly into your React / Next.js / Vite application using the `shadcn` CLI with the `organization/repo/component` namespace:
+
+```bash
+npx shadcn@latest add elqora/chart/chart
+```
+
+*Or directly from the registry manifest URL:*
 
 ```bash
 npx shadcn@latest add https://raw.githubusercontent.com/elqora/chart/main/registry.json
 ```
 
+This installs editable components into your project's `components/chart/` directory, including:
+- `<Chart />` / `<ChartRenderer />`: Top-level unified chart router.
+- `cartesian-renderer`: Line, Area, Bar, Stacked Bar, Sparklines.
+- `categorical-renderer`: Pie, Doughnut.
+- `coordinate-renderer`: Scatter, Bubble.
+- `radial-renderer`: Radar, Gauge.
+- `flow-renderer`: Funnel.
+- `matrix-renderer`: Heatmap.
+- `hierarchical-renderer`: Treemap, Sunburst.
+- `statistical-renderer`: Box Plot.
+- `financial-renderer`: Candlestick.
+
+### Frontend React Usage
+
+Once installed, your frontend simply fetches the JSON response from your PHP backend API and passes it to the unified `<Chart />` component:
+
+```tsx
+import React, { useEffect, useState } from 'react';
+import { Chart, SerializedChart } from '@/components/chart';
+
+export function DashboardWidget({ apiUrl }: { apiUrl: string }) {
+  const [chartData, setChartData] = useState<SerializedChart | null>(null);
+
+  useEffect(() => {
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((data) => setChartData(data));
+  }, [apiUrl]);
+
+  if (!chartData) return <div>Loading...</div>;
+
+  // Render any server-generated chart dynamically
+  return <Chart chart={chartData} height={350} className="shadow-lg" />;
+}
+```
+
 ---
+
 
 
 ## Installation
