@@ -1,0 +1,117 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "dependencies": [
+        "recharts",
+        "lucide-react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chart/index.ts",
+          "type": "registry:ui",
+          "target": "components/chart/index.ts"
+        },
+        {
+          "path": "registry/chart/chart-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/chart-renderer.tsx"
+        },
+        {
+          "path": "registry/chart/chart-provider.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/chart-provider.tsx"
+        },
+        {
+          "path": "registry/chart/chart-context.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/chart-context.tsx"
+        },
+        {
+          "path": "registry/chart/types/enums.ts",
+          "type": "registry:ui",
+          "target": "components/chart/types/enums.ts"
+        },
+        {
+          "path": "registry/chart/types/dimensions.ts",
+          "type": "registry:ui",
+          "target": "components/chart/types/dimensions.ts"
+        },
+        {
+          "path": "registry/chart/types/series.ts",
+          "type": "registry:ui",
+          "target": "components/chart/types/series.ts"
+        },
+        {
+          "path": "registry/chart/types/chart.ts",
+          "type": "registry:ui",
+          "target": "components/chart/types/chart.ts"
+        },
+        {
+          "path": "registry/chart/types/index.ts",
+          "type": "registry:ui",
+          "target": "components/chart/types/index.ts"
+        },
+        {
+          "path": "registry/chart/utils/formatters.ts",
+          "type": "registry:ui",
+          "target": "components/chart/utils/formatters.ts"
+        },
+        {
+          "path": "registry/chart/utils/palette.ts",
+          "type": "registry:ui",
+          "target": "components/chart/utils/palette.ts"
+        },
+        {
+          "path": "registry/chart/renderers/cartesian-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/renderers/cartesian-renderer.tsx"
+        },
+        {
+          "path": "registry/chart/renderers/categorical-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/renderers/categorical-renderer.tsx"
+        },
+        {
+          "path": "registry/chart/renderers/coordinate-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/renderers/coordinate-renderer.tsx"
+        },
+        {
+          "path": "registry/chart/renderers/radial-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/renderers/radial-renderer.tsx"
+        },
+        {
+          "path": "registry/chart/renderers/flow-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/renderers/flow-renderer.tsx"
+        },
+        {
+          "path": "registry/chart/renderers/matrix-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/renderers/matrix-renderer.tsx"
+        },
+        {
+          "path": "registry/chart/renderers/hierarchical-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/renderers/hierarchical-renderer.tsx"
+        },
+        {
+          "path": "registry/chart/renderers/statistical-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/renderers/statistical-renderer.tsx"
+        },
+        {
+          "path": "registry/chart/renderers/financial-renderer.tsx",
+          "type": "registry:ui",
+          "target": "components/chart/renderers/financial-renderer.tsx"
+        }
+      ]
+    }
+  ]
+}

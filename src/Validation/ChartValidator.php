@@ -85,7 +85,7 @@ final class ChartValidator
         }
 
         $valid = match ($chart->type) {
-            ChartType::LINE, ChartType::AREA, ChartType::BAR, ChartType::STACKED_BAR => $chart->data instanceof TabularData,
+            ChartType::LINE, ChartType::AREA, ChartType::BAR, ChartType::STACKED_BAR, ChartType::SPARKLINE => $chart->data instanceof TabularData,
             ChartType::PIE, ChartType::DOUGHNUT => $chart->data instanceof CategoryValueData,
             ChartType::SCATTER, ChartType::BUBBLE => $chart->data instanceof CoordinateData,
             ChartType::HEATMAP => $chart->data instanceof HeatmapData,

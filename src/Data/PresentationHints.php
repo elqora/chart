@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Elqora\Chart\Data;
 
 use Elqora\Chart\Contracts\ArraySerializable;
+use Elqora\Chart\Enums\CurveType;
 use Elqora\Chart\Enums\Orientation;
+use Elqora\Chart\Enums\SparklineMode;
 use Elqora\Chart\Enums\StackingMode;
 use Elqora\Chart\Support\SerializableValue;
 
@@ -17,6 +19,8 @@ final readonly class PresentationHints implements ArraySerializable
         public ?bool $connectNulls = null,
         public ?bool $cumulative = null,
         public ?string $orderBy = null,
+        public ?SparklineMode $sparklineMode = null,
+        public ?CurveType $curveType = null,
     ) {
     }
 
@@ -31,6 +35,8 @@ final readonly class PresentationHints implements ArraySerializable
             connectNulls: isset($data['connect_nulls']) ? (bool) $data['connect_nulls'] : null,
             cumulative: isset($data['cumulative']) ? (bool) $data['cumulative'] : null,
             orderBy: isset($data['order_by']) ? (string) $data['order_by'] : null,
+            sparklineMode: isset($data['sparkline_mode']) ? SparklineMode::from((string) $data['sparkline_mode']) : null,
+            curveType: isset($data['curve_type']) ? CurveType::from((string) $data['curve_type']) : null,
         );
     }
 
@@ -42,6 +48,8 @@ final readonly class PresentationHints implements ArraySerializable
             'connect_nulls' => $this->connectNulls,
             'cumulative' => $this->cumulative,
             'order_by' => $this->orderBy,
+            'sparkline_mode' => $this->sparklineMode,
+            'curve_type' => $this->curveType,
         ]);
     }
 }

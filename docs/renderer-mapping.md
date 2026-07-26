@@ -10,6 +10,7 @@ This package does not provide renderer adapters. It provides a semantic chart de
 - `HeatmapData` can map to matrix or triplet formats by grouping x, y, and value fields.
 - `HierarchyData` can map to tree-capable renderers, nested tables, or document outlines.
 - `CandlestickData` can map to OHLC-capable renderers or financial tables.
+- Sparkline `TabularData` maps to compact micro-charts stripped of visual clutter (gridlines, axes, legends, dots) in `line`, `area`, or `bar` modes.
 
 ## Excluded renderer features
 

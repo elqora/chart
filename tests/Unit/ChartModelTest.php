@@ -12,6 +12,7 @@ use Elqora\Chart\Data\TabularData;
 use Elqora\Chart\Dimensions\Dimension;
 use Elqora\Chart\Enums\ChartFamily;
 use Elqora\Chart\Enums\ChartType;
+use Elqora\Chart\Enums\CurveType;
 use Elqora\Chart\Enums\DimensionRole;
 use Elqora\Chart\Enums\Orientation;
 use Elqora\Chart\Enums\PercentageConvention;
@@ -126,5 +127,15 @@ final class ChartModelTest extends TestCase
         );
 
         self::assertContains('category_value.value.negative', $chart->validate()->codes());
+    }
+
+    public function testPresentationHintsSupportsCurveType(): void
+    {
+        $hints = new PresentationHints(curveType: CurveType::LINEAR);
+        $array = $hints->toArray();
+        self::assertSame('linear', $array['curve_type']);
+
+        $restored = PresentationHints::fromArray($array);
+        self::assertSame(CurveType::LINEAR, $restored->curveType);
     }
 }

@@ -23,10 +23,12 @@ enum ChartType: string
     case BOX_PLOT = 'box_plot';
     case CANDLESTICK = 'candlestick';
 
+    case SPARKLINE = 'sparkline';
+
     public function family(): ChartFamily
     {
         return match ($this) {
-            self::LINE, self::AREA, self::BAR, self::STACKED_BAR => ChartFamily::CARTESIAN,
+            self::LINE, self::AREA, self::BAR, self::STACKED_BAR, self::SPARKLINE => ChartFamily::CARTESIAN,
             self::PIE, self::DOUGHNUT => ChartFamily::CATEGORICAL,
             self::SCATTER, self::BUBBLE => ChartFamily::COORDINATE,
             self::RADAR, self::GAUGE => ChartFamily::RADIAL,

@@ -1,0 +1,863 @@
+{
+    "line": {
+        "key": "line.throughput",
+        "type": "line",
+        "family": "cartesian",
+        "title": "Line Chart: System Throughput",
+        "description": "Message delivery over 30-min intervals.",
+        "data": {
+            "kind": "tabular",
+            "category_field": "time",
+            "dimensions": [],
+            "series": [
+                {
+                    "key": "delivered",
+                    "label": "Delivered Units",
+                    "field": "delivered",
+                    "value_type": "integer"
+                },
+                {
+                    "key": "failed",
+                    "label": "Failed Delivery",
+                    "field": "failed",
+                    "value_type": "integer"
+                }
+            ],
+            "rows": [
+                {
+                    "time": "10:00",
+                    "delivered": 200,
+                    "failed": 5
+                },
+                {
+                    "time": "10:30",
+                    "delivered": 550,
+                    "failed": 12
+                },
+                {
+                    "time": "11:00",
+                    "delivered": 1200,
+                    "failed": 25
+                },
+                {
+                    "time": "11:30",
+                    "delivered": 890,
+                    "failed": 18
+                },
+                {
+                    "time": "12:00",
+                    "delivered": 1400,
+                    "failed": 30
+                }
+            ]
+        }
+    },
+    "area": {
+        "key": "area.volume",
+        "type": "area",
+        "family": "cartesian",
+        "title": "Area Chart: Message Volume",
+        "description": "Stacked area representation of throughput.",
+        "data": {
+            "kind": "tabular",
+            "category_field": "time",
+            "dimensions": [],
+            "series": [
+                {
+                    "key": "delivered",
+                    "label": "Delivered Units",
+                    "field": "delivered",
+                    "value_type": "integer"
+                },
+                {
+                    "key": "failed",
+                    "label": "Failed Delivery",
+                    "field": "failed",
+                    "value_type": "integer"
+                }
+            ],
+            "rows": [
+                {
+                    "time": "10:00",
+                    "delivered": 200,
+                    "failed": 5
+                },
+                {
+                    "time": "10:30",
+                    "delivered": 550,
+                    "failed": 12
+                },
+                {
+                    "time": "11:00",
+                    "delivered": 1200,
+                    "failed": 25
+                },
+                {
+                    "time": "11:30",
+                    "delivered": 890,
+                    "failed": 18
+                },
+                {
+                    "time": "12:00",
+                    "delivered": 1400,
+                    "failed": 30
+                }
+            ],
+            "presentation": {
+                "stacking": "stacked"
+            }
+        }
+    },
+    "bar": {
+        "key": "bar.traffic",
+        "type": "bar",
+        "family": "cartesian",
+        "title": "Bar Chart: Hourly Traffic",
+        "description": "Bar chart of delivered vs failed messages.",
+        "data": {
+            "kind": "tabular",
+            "category_field": "time",
+            "dimensions": [],
+            "series": [
+                {
+                    "key": "delivered",
+                    "label": "Delivered Units",
+                    "field": "delivered",
+                    "value_type": "integer"
+                },
+                {
+                    "key": "failed",
+                    "label": "Failed Delivery",
+                    "field": "failed",
+                    "value_type": "integer"
+                }
+            ],
+            "rows": [
+                {
+                    "time": "10:00",
+                    "delivered": 200,
+                    "failed": 5
+                },
+                {
+                    "time": "10:30",
+                    "delivered": 550,
+                    "failed": 12
+                },
+                {
+                    "time": "11:00",
+                    "delivered": 1200,
+                    "failed": 25
+                },
+                {
+                    "time": "11:30",
+                    "delivered": 890,
+                    "failed": 18
+                },
+                {
+                    "time": "12:00",
+                    "delivered": 1400,
+                    "failed": 30
+                }
+            ]
+        }
+    },
+    "sparkline_line": {
+        "key": "sparkline.revenue",
+        "type": "sparkline",
+        "family": "cartesian",
+        "title": "Sparkline (Line - Monotone): Revenue Trend",
+        "description": "Smooth monotonic curve connecting data points without sharp breaks.",
+        "data": {
+            "kind": "tabular",
+            "category_field": "time",
+            "dimensions": [],
+            "series": [
+                {
+                    "key": "delivered",
+                    "label": "Revenue",
+                    "field": "delivered",
+                    "value_type": "currency"
+                }
+            ],
+            "rows": [
+                {
+                    "time": "10:00",
+                    "delivered": 200
+                },
+                {
+                    "time": "10:30",
+                    "delivered": 450
+                },
+                {
+                    "time": "11:00",
+                    "delivered": 600
+                },
+                {
+                    "time": "11:30",
+                    "delivered": 1100
+                },
+                {
+                    "time": "12:00",
+                    "delivered": 950
+                },
+                {
+                    "time": "12:30",
+                    "delivered": 1400
+                }
+            ],
+            "presentation": {
+                "stacking": "none",
+                "sparkline_mode": "line"
+            }
+        }
+    },
+    "sparkline_linear": {
+        "key": "sparkline.linear",
+        "type": "sparkline",
+        "family": "cartesian",
+        "title": "Sparkline (Line - Linear): Direct Metric",
+        "description": "Sharp straight-line segments with distinct angular corners.",
+        "data": {
+            "kind": "tabular",
+            "category_field": "time",
+            "dimensions": [],
+            "series": [
+                {
+                    "key": "delivered",
+                    "label": "Metrics",
+                    "field": "delivered",
+                    "value_type": "number"
+                }
+            ],
+            "rows": [
+                {
+                    "time": "10:00",
+                    "delivered": 100
+                },
+                {
+                    "time": "10:30",
+                    "delivered": 1200
+                },
+                {
+                    "time": "11:00",
+                    "delivered": 250
+                },
+                {
+                    "time": "11:30",
+                    "delivered": 1350
+                },
+                {
+                    "time": "12:00",
+                    "delivered": 300
+                },
+                {
+                    "time": "12:30",
+                    "delivered": 1400
+                }
+            ],
+            "presentation": {
+                "stacking": "none",
+                "sparkline_mode": "line"
+            }
+        }
+    },
+    "sparkline_area": {
+        "key": "sparkline.users",
+        "type": "sparkline",
+        "family": "cartesian",
+        "title": "Sparkline (Area): Active Users",
+        "description": "Filled color gradient area below the curve line.",
+        "data": {
+            "kind": "tabular",
+            "category_field": "time",
+            "dimensions": [],
+            "series": [
+                {
+                    "key": "delivered",
+                    "label": "Users",
+                    "field": "delivered",
+                    "value_type": "integer"
+                }
+            ],
+            "rows": [
+                {
+                    "time": "10:00",
+                    "delivered": 300
+                },
+                {
+                    "time": "10:30",
+                    "delivered": 650
+                },
+                {
+                    "time": "11:00",
+                    "delivered": 500
+                },
+                {
+                    "time": "11:30",
+                    "delivered": 980
+                },
+                {
+                    "time": "12:00",
+                    "delivered": 850
+                },
+                {
+                    "time": "12:30",
+                    "delivered": 1300
+                }
+            ],
+            "presentation": {
+                "stacking": "none",
+                "sparkline_mode": "area"
+            }
+        }
+    },
+    "sparkline_bar": {
+        "key": "sparkline.conversions",
+        "type": "sparkline",
+        "family": "cartesian",
+        "title": "Sparkline (Bar): Conversions",
+        "description": "Compact vertical bar micro-chart.",
+        "data": {
+            "kind": "tabular",
+            "category_field": "time",
+            "dimensions": [],
+            "series": [
+                {
+                    "key": "delivered",
+                    "label": "Conversions",
+                    "field": "delivered",
+                    "value_type": "integer"
+                }
+            ],
+            "rows": [
+                {
+                    "time": "10:00",
+                    "delivered": 400
+                },
+                {
+                    "time": "10:30",
+                    "delivered": 850
+                },
+                {
+                    "time": "11:00",
+                    "delivered": 350
+                },
+                {
+                    "time": "11:30",
+                    "delivered": 1100
+                },
+                {
+                    "time": "12:00",
+                    "delivered": 650
+                },
+                {
+                    "time": "12:30",
+                    "delivered": 1250
+                }
+            ],
+            "presentation": {
+                "stacking": "none",
+                "sparkline_mode": "bar"
+            }
+        }
+    },
+    "stacked_bar": {
+        "key": "bar.stacked",
+        "type": "stacked_bar",
+        "family": "cartesian",
+        "title": "Stacked Bar: System Load",
+        "description": "Normalized stacked bar visualization.",
+        "data": {
+            "kind": "tabular",
+            "category_field": "time",
+            "dimensions": [],
+            "series": [
+                {
+                    "key": "delivered",
+                    "label": "Delivered Units",
+                    "field": "delivered",
+                    "value_type": "integer"
+                },
+                {
+                    "key": "failed",
+                    "label": "Failed Delivery",
+                    "field": "failed",
+                    "value_type": "integer"
+                }
+            ],
+            "rows": [
+                {
+                    "time": "10:00",
+                    "delivered": 200,
+                    "failed": 5
+                },
+                {
+                    "time": "10:30",
+                    "delivered": 550,
+                    "failed": 12
+                },
+                {
+                    "time": "11:00",
+                    "delivered": 1200,
+                    "failed": 25
+                },
+                {
+                    "time": "11:30",
+                    "delivered": 890,
+                    "failed": 18
+                },
+                {
+                    "time": "12:00",
+                    "delivered": 1400,
+                    "failed": 30
+                }
+            ],
+            "presentation": {
+                "stacking": "stacked"
+            }
+        }
+    },
+    "pie": {
+        "key": "pie.status",
+        "type": "pie",
+        "family": "categorical",
+        "title": "Pie Chart: Delivery Status",
+        "description": "Proportional distribution of delivery statuses.",
+        "data": {
+            "kind": "category_value",
+            "category_field": "status",
+            "value_field": "count",
+            "rows": [
+                {
+                    "status": "Delivered",
+                    "count": 4240
+                },
+                {
+                    "status": "Failed",
+                    "count": 90
+                },
+                {
+                    "status": "Pending",
+                    "count": 310
+                }
+            ]
+        }
+    },
+    "doughnut": {
+        "key": "doughnut.status",
+        "type": "doughnut",
+        "family": "categorical",
+        "title": "Doughnut Chart: Status Mix",
+        "description": "Doughnut distribution layout.",
+        "data": {
+            "kind": "category_value",
+            "category_field": "status",
+            "value_field": "count",
+            "rows": [
+                {
+                    "status": "Completed",
+                    "count": 830
+                },
+                {
+                    "status": "Failed",
+                    "count": 90
+                },
+                {
+                    "status": "Canceled",
+                    "count": 80
+                }
+            ]
+        }
+    },
+    "scatter": {
+        "key": "scatter.latency",
+        "type": "scatter",
+        "family": "coordinate",
+        "title": "Scatter Plot: Batch Latency",
+        "description": "Scatter correlation between batch size and execution duration.",
+        "data": {
+            "kind": "coordinate",
+            "x_field": "quantity",
+            "y_field": "duration",
+            "rows": [
+                {
+                    "quantity": 100,
+                    "duration": 12
+                },
+                {
+                    "quantity": 250,
+                    "duration": 22
+                },
+                {
+                    "quantity": 500,
+                    "duration": 45
+                },
+                {
+                    "quantity": 800,
+                    "duration": 70
+                },
+                {
+                    "quantity": 1200,
+                    "duration": 110
+                }
+            ]
+        }
+    },
+    "bubble": {
+        "key": "bubble.performance",
+        "type": "bubble",
+        "family": "coordinate",
+        "title": "Bubble Chart: Service Metrics",
+        "description": "Coordinate scatter with relative bubble size dimensions.",
+        "data": {
+            "kind": "coordinate",
+            "x_field": "requests",
+            "y_field": "latency",
+            "size_field": "size",
+            "rows": [
+                {
+                    "requests": 100,
+                    "latency": 15,
+                    "size": 30
+                },
+                {
+                    "requests": 400,
+                    "latency": 35,
+                    "size": 80
+                },
+                {
+                    "requests": 900,
+                    "latency": 60,
+                    "size": 140
+                }
+            ]
+        }
+    },
+    "radar": {
+        "key": "radar.quality",
+        "type": "radar",
+        "family": "radial",
+        "title": "Radar Chart: Service Quality Indicators",
+        "description": "Multi-axis indicator radar breakdown.",
+        "data": {
+            "kind": "radar",
+            "indicators": [
+                {
+                    "key": "speed",
+                    "label": "Response Speed",
+                    "minimum": 100
+                },
+                {
+                    "key": "reliability",
+                    "label": "Uptime Reliability",
+                    "minimum": 100
+                },
+                {
+                    "key": "security",
+                    "label": "Security Score",
+                    "minimum": 100
+                },
+                {
+                    "key": "usability",
+                    "label": "Usability Index",
+                    "minimum": 100
+                }
+            ],
+            "series": [
+                {
+                    "key": "gateway_a",
+                    "label": "API Gateway A",
+                    "values": [
+                        90,
+                        95,
+                        85,
+                        80
+                    ]
+                },
+                {
+                    "key": "gateway_b",
+                    "label": "API Gateway B",
+                    "values": [
+                        70,
+                        85,
+                        95,
+                        90
+                    ]
+                }
+            ]
+        }
+    },
+    "gauge": {
+        "key": "gauge.cpu",
+        "type": "gauge",
+        "family": "radial",
+        "title": "Gauge Chart: Cluster CPU Utilization",
+        "description": "Real-time percentage gauge display.",
+        "data": {
+            "kind": "gauge",
+            "value": 78.4,
+            "minimum": 0,
+            "maximum": 100
+        }
+    },
+    "funnel": {
+        "key": "funnel.conversion",
+        "type": "funnel",
+        "family": "flow",
+        "title": "Funnel Chart: Checkout Conversion Flow",
+        "description": "Stage conversion pipeline.",
+        "data": {
+            "kind": "funnel",
+            "stages": [
+                {
+                    "key": "impressions",
+                    "label": "Page Impressions",
+                    "value": 10000
+                },
+                {
+                    "key": "cart",
+                    "label": "Added to Cart",
+                    "value": 3500
+                },
+                {
+                    "key": "checkout",
+                    "label": "Initiated Checkout",
+                    "value": 1200
+                },
+                {
+                    "key": "purchase",
+                    "label": "Completed Purchase",
+                    "value": 480
+                }
+            ]
+        }
+    },
+    "heatmap": {
+        "key": "heatmap.traffic",
+        "type": "heatmap",
+        "family": "matrix",
+        "title": "Heatmap Chart: Hourly Request Matrix",
+        "description": "2D Matrix heatmap representation.",
+        "data": {
+            "kind": "heatmap",
+            "x_field": "day",
+            "y_field": "hour",
+            "value_field": "requests",
+            "rows": [
+                {
+                    "day": "Mon",
+                    "hour": "09:00",
+                    "requests": 120
+                },
+                {
+                    "day": "Mon",
+                    "hour": "12:00",
+                    "requests": 450
+                },
+                {
+                    "day": "Mon",
+                    "hour": "15:00",
+                    "requests": 310
+                },
+                {
+                    "day": "Tue",
+                    "hour": "09:00",
+                    "requests": 200
+                },
+                {
+                    "day": "Tue",
+                    "hour": "12:00",
+                    "requests": 520
+                },
+                {
+                    "day": "Tue",
+                    "hour": "15:00",
+                    "requests": 280
+                }
+            ]
+        }
+    },
+    "treemap": {
+        "key": "treemap.storage",
+        "type": "treemap",
+        "family": "hierarchical",
+        "title": "Treemap Chart: Storage Breakdown",
+        "description": "Proportional hierarchical treemap.",
+        "data": {
+            "kind": "hierarchy",
+            "roots": [
+                {
+                    "key": "root",
+                    "label": "All Storage",
+                    "value": 500,
+                    "children": [
+                        {
+                            "key": "db",
+                            "label": "Databases",
+                            "value": 300,
+                            "children": [
+                                {
+                                    "key": "pg",
+                                    "label": "PostgreSQL",
+                                    "value": 200
+                                },
+                                {
+                                    "key": "redis",
+                                    "label": "Redis Cache",
+                                    "value": 100
+                                }
+                            ]
+                        },
+                        {
+                            "key": "media",
+                            "label": "Media Assets",
+                            "value": 200,
+                            "children": [
+                                {
+                                    "key": "images",
+                                    "label": "Images",
+                                    "value": 150
+                                },
+                                {
+                                    "key": "documents",
+                                    "label": "PDFs",
+                                    "value": 50
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "sunburst": {
+        "key": "sunburst.org",
+        "type": "sunburst",
+        "family": "hierarchical",
+        "title": "Sunburst Chart: Organizational Hierarchy",
+        "description": "Multi-level radial sunburst view.",
+        "data": {
+            "kind": "hierarchy",
+            "roots": [
+                {
+                    "key": "company",
+                    "label": "Elqora Global",
+                    "value": 100,
+                    "children": [
+                        {
+                            "key": "eng",
+                            "label": "Engineering",
+                            "value": 60,
+                            "children": [
+                                {
+                                    "key": "backend",
+                                    "label": "Backend Systems",
+                                    "value": 35
+                                },
+                                {
+                                    "key": "frontend",
+                                    "label": "Frontend UI",
+                                    "value": 25
+                                }
+                            ]
+                        },
+                        {
+                            "key": "product",
+                            "label": "Product & Design",
+                            "value": 40
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "box_plot": {
+        "key": "box_plot.response_time",
+        "type": "box_plot",
+        "family": "statistical",
+        "title": "Box Plot: Latency Distribution",
+        "description": "Interquartile statistical distribution.",
+        "data": {
+            "kind": "box_plot",
+            "items": [
+                {
+                    "category": "US-East",
+                    "minimum": 12,
+                    "lower_quartile": 25,
+                    "median": 42,
+                    "upper_quartile": 65,
+                    "maximum": 95,
+                    "outliers": [
+                        110
+                    ]
+                },
+                {
+                    "category": "EU-Central",
+                    "minimum": 18,
+                    "lower_quartile": 32,
+                    "median": 50,
+                    "upper_quartile": 78,
+                    "maximum": 115,
+                    "outliers": [
+                        140
+                    ]
+                },
+                {
+                    "category": "AP-South",
+                    "minimum": 25,
+                    "lower_quartile": 45,
+                    "median": 75,
+                    "upper_quartile": 110,
+                    "maximum": 160
+                }
+            ]
+        }
+    },
+    "candlestick": {
+        "key": "candlestick.stock",
+        "type": "candlestick",
+        "family": "financial",
+        "title": "Candlestick Chart: Stock OHLC Pricing",
+        "description": "Financial Open-High-Low-Close price action.",
+        "data": {
+            "kind": "candlestick",
+            "points": [
+                {
+                    "category": "Jul 21",
+                    "open": 150,
+                    "high": 158.5,
+                    "low": 148,
+                    "close": 155.2
+                },
+                {
+                    "category": "Jul 22",
+                    "open": 155.2,
+                    "high": 162,
+                    "low": 153.5,
+                    "close": 160
+                },
+                {
+                    "category": "Jul 23",
+                    "open": 160,
+                    "high": 161.5,
+                    "low": 152,
+                    "close": 153.8
+                },
+                {
+                    "category": "Jul 24",
+                    "open": 153.8,
+                    "high": 159,
+                    "low": 151,
+                    "close": 158.4
+                },
+                {
+                    "category": "Jul 25",
+                    "open": 158.4,
+                    "high": 165,
+                    "low": 157,
+                    "close": 164.2
+                }
+            ]
+        }
+    }
+}

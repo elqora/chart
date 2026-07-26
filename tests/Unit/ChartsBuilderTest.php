@@ -12,6 +12,7 @@ use Elqora\Chart\Data\PresentationHints;
 use Elqora\Chart\Data\TabularData;
 use Elqora\Chart\Enums\ChartType;
 use Elqora\Chart\Enums\Orientation;
+use Elqora\Chart\Enums\SparklineMode;
 use Elqora\Chart\Enums\ValueType;
 use Elqora\Chart\Series\Series;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -35,6 +36,7 @@ final class ChartsBuilderTest extends TestCase
         yield 'line' => [Charts::line('delivery.line', 'Delivery line', 'time', $rows, $series), ChartType::LINE];
         yield 'area' => [Charts::area('delivery.area', 'Delivery area', 'time', $rows, $series), ChartType::AREA];
         yield 'bar' => [Charts::bar('delivery.bar', 'Delivery bar', 'time', $rows, $series), ChartType::BAR];
+        yield 'sparkline' => [Charts::sparkline('delivery.sparkline', 'Delivery sparkline', 'time', $rows, $series), ChartType::SPARKLINE];
         yield 'pie' => [
             Charts::pie('orders.pie', 'Orders pie', 'status', 'count', [
                 ['status' => 'completed', 'count' => 83],
@@ -217,5 +219,20 @@ final class ChartsBuilderTest extends TestCase
 
         self::assertTrue($chart->validate()->isValid());
         self::assertSame('line', $chart->toArray()['type']);
+    }
+
+    public function testSparklineBuilderWithModes(): void
+    {
+        $rows = [['time' => '10:00', 'delivered' => 10]];
+        $series = [new Series('delivered', 'Delivered', 'delivered')];
+
+        $lineSparkline = Charts::sparkline('sp.line', 'Line Sparkline', 'time', $rows, $series, SparklineMode::LINE);
+        $areaSparkline = Charts::sparkline('sp.area', 'Area Sparkline', 'time', $rows, $series, SparklineMode::AREA);
+        $barSparkline = Charts::sparkline('sp.bar', 'Bar Sparkline', 'time', $rows, $series, SparklineMode::BAR);
+
+        self::assertSame('sparkline', $lineSparkline->toArray()['type']);
+        self::assertSame('line', $lineSparkline->toArray()['data']['presentation']['sparkline_mode']);
+        self::assertSame('area', $areaSparkline->toArray()['data']['presentation']['sparkline_mode']);
+        self::assertSame('bar', $barSparkline->toArray()['data']['presentation']['sparkline_mode']);
     }
 }

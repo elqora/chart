@@ -20,5 +20,6 @@ Built-in chart types are represented by `ChartType`.
 | `sunburst` | `HierarchyData` | Same hierarchy semantics as treemap. |
 | `box_plot` | `BoxPlotData` | Ordered minimum, quartiles, median, and maximum. |
 | `candlestick` | `CandlestickData` | OHLC values with logical high and low bounds. |
+| `sparkline` | `TabularData` | Minimalist inline trend micro-chart. Supports modes: `line`, `area`, `bar`. |
 
 Future chart types can be represented through `CustomData` when the producer and host agree on a portable custom semantic payload.

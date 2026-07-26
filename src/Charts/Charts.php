@@ -9,6 +9,7 @@ use Elqora\Chart\Data\CoordinateData;
 use Elqora\Chart\Data\PresentationHints;
 use Elqora\Chart\Data\TabularData;
 use Elqora\Chart\Enums\ChartType;
+use Elqora\Chart\Enums\SparklineMode;
 
 final class Charts
 {
@@ -91,6 +92,44 @@ final class Charts
             rows: $rows,
             series: $series,
             presentation: $presentation,
+            description: $description,
+            meta: $meta,
+        );
+    }
+
+    /**
+     * @param list<array<string, mixed>> $rows
+     * @param list<\Elqora\Chart\Series\Series> $series
+     * @param array<string, mixed> $meta
+     */
+    public static function sparkline(
+        string $key,
+        string $title,
+        string $category,
+        array $rows,
+        array $series,
+        SparklineMode $mode = SparklineMode::LINE,
+        ?PresentationHints $presentation = null,
+        ?string $description = null,
+        array $meta = [],
+    ): Chart {
+        $effectivePresentation = new PresentationHints(
+            orientation: $presentation?->orientation,
+            stacking: $presentation?->stacking ?? \Elqora\Chart\Enums\StackingMode::NONE,
+            connectNulls: $presentation?->connectNulls,
+            cumulative: $presentation?->cumulative,
+            orderBy: $presentation?->orderBy,
+            sparklineMode: $presentation?->sparklineMode ?? $mode,
+        );
+
+        return self::tabular(
+            type: ChartType::SPARKLINE,
+            key: $key,
+            title: $title,
+            category: $category,
+            rows: $rows,
+            series: $series,
+            presentation: $effectivePresentation,
             description: $description,
             meta: $meta,
         );

@@ -1,27 +1,22 @@
 AGENTS.md
 
-Project
+Project Overview
 
-This repository contains Elqora Chart, a framework-neutral PHP package for defining portable, renderer-agnostic chart data.
+This repository contains the Elqora chart system.
 
-The package provides contracts, DTOs, enums, validation, serialization, and hydration for representing charts as structured data.
+It has two related parts:
 
-It does not render charts.
+1. A PHP Composer package named `elqora/chart`.
+2. An Elqora shadcn registry containing editable React chart infrastructure.
 
-The chart definitions produced by this package should be consumable by hosts using systems such as:
+The PHP package is the protocol authority.
 
-- Apache ECharts
-- Chart.js
-- Recharts
-- ApexCharts
-- Plotly
-- Highcharts
-- D3-based renderers
-- native mobile chart libraries
-- reporting and document-generation systems
-- custom internal visualization engines
+The React registry is the customizable host implementation.
 
-The package must not depend on any of those systems.
+The PHP side defines what a chart means, how it is serialized, and what constitutes a valid payload. The React side decides how that chart is rendered in a consuming application.
+
+Do not treat the React implementation as authoritative over the PHP contracts.
+
 
 Primary objective
 
